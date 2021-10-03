@@ -55,12 +55,57 @@ binary_sensor:
       inverted: yes
     name: "${upper_name} Power Button"
     id: "${name}_power_button"
-    on_press:
+    on_multi_click:
+    
+    - timing:
+        - ON for at most 1s
+        - OFF for at least 0.5s
       then:
+        - logger.log: "Single Short Clicked"
+        - switch.toggle: "${name}_switch1"
+    
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at least 0.1s
+      then:
+        - logger.log: "Double Clicked"
+        - switch.toggle: "${name}_switch2"
+        
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at least 0.1s
+      then:
+        - logger.log: "Triple Clicked"
+        - switch.toggle: "${name}_switch3"
+        
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at least 0.1s
+      then:
+        - logger.log: "Quad Clicked"
         - switch.toggle: "${name}_usb"
+            
+            
+    - timing:
+        - ON for at least 1s
+      then:
+        - logger.log: "Single Long Clicked"
         - switch.toggle: "${name}_switch1"
         - switch.toggle: "${name}_switch2"
         - switch.toggle: "${name}_switch3"
+        - switch.toggle: "${name}_usb"
 
 switch:
   - platform: gpio
@@ -126,12 +171,57 @@ binary_sensor:
       inverted: yes
     name: "${upper_name} Power Button"
     id: "${name}_power_button"
-    on_press:
+    on_multi_click:
+    
+    - timing:
+        - ON for at most 1s
+        - OFF for at least 0.5s
       then:
+        - logger.log: "Single Short Clicked"
+        - switch.toggle: "${name}_switch1"
+    
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at least 0.1s
+      then:
+        - logger.log: "Double Clicked"
+        - switch.toggle: "${name}_switch2"
+        
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at least 0.1s
+      then:
+        - logger.log: "Triple Clicked"
+        - switch.toggle: "${name}_switch3"
+        
+    - timing:
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at most 0.5s
+        - ON for at most 1s
+        - OFF for at least 0.1s
+      then:
+        - logger.log: "Quad Clicked"
         - switch.toggle: "${name}_usb"
+            
+            
+    - timing:
+        - ON for at least 1s
+      then:
+        - logger.log: "Single Long Clicked"
         - switch.toggle: "${name}_switch1"
         - switch.toggle: "${name}_switch2"
         - switch.toggle: "${name}_switch3"
+        - switch.toggle: "${name}_usb"
 
 switch:
   - platform: gpio
